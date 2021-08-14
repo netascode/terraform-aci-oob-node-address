@@ -1,22 +1,24 @@
 <!-- BEGIN_TF_DOCS -->
-[![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
+[![Tests](https://github.com/netascode/terraform-aci-oob-node-address/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-oob-node-address/actions/workflows/test.yml)
 
-# Terraform ACI Scaffolding Module
+# Terraform ACI OOB Node Address Module
 
-Description
+Manages ACI OOB Node Address
 
 Location in GUI:
-`Tenants` » `XXX`
+`Tenants` » `mgmt` » `Node Management Addresses` » `Static Node Management Addresses`
 
 ## Examples
 
 ```hcl
-module "aci_scaffolding" {
-  source = "netascode/scaffolding/aci"
+module "aci_oob_node_address" {
+  source = "netascode/oob-node-address/aci"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  node_id        = 111
+  pod            = 2
+  address        = "100.1.1.111/24"
+  gateway        = "100.1.1.254"
+  endpoint_group = "OOB1"
 }
 
 ```
@@ -38,20 +40,22 @@ module "aci_scaffolding" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | Tenant name. | `string` | n/a | yes |
-| <a name="input_alias"></a> [alias](#input\_alias) | Tenant alias. | `string` | `""` | no |
-| <a name="input_description"></a> [description](#input\_description) | Tenant description. | `string` | `""` | no |
+| <a name="input_node_id"></a> [node\_id](#input\_node\_id) | Node ID. | `number` | n/a | yes |
+| <a name="input_pod"></a> [pod](#input\_pod) | Pod ID. | `number` | `1` | no |
+| <a name="input_address"></a> [address](#input\_address) | OOB IP address. | `string` | n/a | yes |
+| <a name="input_gateway"></a> [gateway](#input\_gateway) | OOB gateway IP. | `string` | n/a | yes |
+| <a name="input_endpoint_group"></a> [endpoint\_group](#input\_endpoint\_group) | OOB management endpoint group name. | `string` | n/a | yes |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `fvTenant` object. |
-| <a name="output_name"></a> [name](#output\_name) | Tenant name. |
+| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `mgmtRsOoBStNode` object. |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aci_rest.fvTenant](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.mgmtOoB](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
+| [aci_rest.mgmtRsOoBStNode](https://registry.terraform.io/providers/netascode/aci/latest/docs/resources/rest) | resource |
 <!-- END_TF_DOCS -->

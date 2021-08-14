@@ -1,31 +1,40 @@
-variable "name" {
-  description = "Tenant name."
-  type        = string
+variable "node_id" {
+  description = "Node ID."
+  type        = number
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = var.node_id >= 1 && var.node_id <= 4000
+    error_message = "Minimum value: 1. Maximum value: 4000."
   }
 }
 
-variable "alias" {
-  description = "Tenant alias."
-  type        = string
-  default     = ""
+variable "pod" {
+  description = "Pod ID."
+  type        = number
+  default     = 1
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = var.pod >= 1 && var.pod <= 255
+    error_message = "Minimum value: 1. Maximum value: 255."
   }
 }
 
-variable "description" {
-  description = "Tenant description."
+variable "address" {
+  description = "OOB IP address."
   type        = string
-  default     = ""
+}
+
+variable "gateway" {
+  description = "OOB gateway IP."
+  type        = string
+}
+
+variable "endpoint_group" {
+  description = "OOB management endpoint group name."
+  type        = string
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.endpoint_group))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
   }
 }

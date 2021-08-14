@@ -1,9 +1,17 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "mgmtOoB" {
+  dn         = "uni/tn-mgmt/mgmtp-default/oob-${var.endpoint_group}"
+  class_name = "mgmtOoB"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    name = var.endpoint_group
+  }
+}
+
+resource "aci_rest" "mgmtRsOoBStNode" {
+  dn         = "${aci_rest.mgmtOoB.id}/rsooBStNode-[topology/pod-${var.pod}/node-${var.node_id}]"
+  class_name = "mgmtRsOoBStNode"
+  content = {
+    addr = var.address
+    gw   = var.gateway
+    tDn  = "topology/pod-${var.pod}/node-${var.node_id}"
   }
 }
