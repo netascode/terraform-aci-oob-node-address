@@ -12,11 +12,12 @@ Location in GUI:
 
 ```hcl
 module "aci_oob_node_address" {
-  source = "netascode/oob-node-address/aci"
+  source  = "netascode/oob-node-address/aci"
+  version = ">= 0.0.2"
 
   node_id        = 111
-  pod            = 2
-  address        = "100.1.1.111/24"
+  pod_id         = 2
+  ip             = "100.1.1.111/24"
   gateway        = "100.1.1.254"
   endpoint_group = "OOB1"
 }
@@ -41,8 +42,8 @@ module "aci_oob_node_address" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_node_id"></a> [node\_id](#input\_node\_id) | Node ID. | `number` | n/a | yes |
-| <a name="input_pod"></a> [pod](#input\_pod) | Pod ID. | `number` | `1` | no |
-| <a name="input_address"></a> [address](#input\_address) | OOB IP address. | `string` | n/a | yes |
+| <a name="input_pod_id"></a> [pod\_id](#input\_pod\_id) | Pod ID. | `number` | `1` | no |
+| <a name="input_ip"></a> [ip](#input\_ip) | OOB IP address. | `string` | n/a | yes |
 | <a name="input_gateway"></a> [gateway](#input\_gateway) | OOB gateway IP. | `string` | n/a | yes |
 | <a name="input_endpoint_group"></a> [endpoint\_group](#input\_endpoint\_group) | OOB management endpoint group name. | `string` | n/a | yes |
 

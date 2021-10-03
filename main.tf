@@ -7,11 +7,11 @@ resource "aci_rest" "mgmtOoB" {
 }
 
 resource "aci_rest" "mgmtRsOoBStNode" {
-  dn         = "${aci_rest.mgmtOoB.id}/rsooBStNode-[topology/pod-${var.pod}/node-${var.node_id}]"
+  dn         = "${aci_rest.mgmtOoB.id}/rsooBStNode-[topology/pod-${var.pod_id}/node-${var.node_id}]"
   class_name = "mgmtRsOoBStNode"
   content = {
-    addr = var.address
+    addr = var.ip
     gw   = var.gateway
-    tDn  = "topology/pod-${var.pod}/node-${var.node_id}"
+    tDn  = "topology/pod-${var.pod_id}/node-${var.node_id}"
   }
 }

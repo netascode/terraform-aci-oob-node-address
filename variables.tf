@@ -8,18 +8,18 @@ variable "node_id" {
   }
 }
 
-variable "pod" {
+variable "pod_id" {
   description = "Pod ID."
   type        = number
   default     = 1
 
   validation {
-    condition     = var.pod >= 1 && var.pod <= 255
+    condition     = var.pod_id >= 1 && var.pod_id <= 255
     error_message = "Minimum value: 1. Maximum value: 255."
   }
 }
 
-variable "address" {
+variable "ip" {
   description = "OOB IP address."
   type        = string
 }

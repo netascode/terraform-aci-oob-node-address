@@ -1,9 +1,10 @@
 module "aci_oob_node_address" {
-  source = "netascode/oob-node-address/aci"
+  source  = "netascode/oob-node-address/aci"
+  version = ">= 0.0.2"
 
   node_id        = 111
-  pod            = 2
-  address        = "100.1.1.111/24"
+  pod_id         = 2
+  ip             = "100.1.1.111/24"
   gateway        = "100.1.1.254"
   endpoint_group = "OOB1"
 }

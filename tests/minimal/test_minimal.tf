@@ -15,7 +15,7 @@ module "main" {
   source = "../.."
 
   node_id        = 111
-  address        = "100.1.1.111/24"
+  ip             = "100.1.1.111/24"
   gateway        = "100.1.1.254"
   endpoint_group = "OOB1"
 }
