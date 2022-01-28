@@ -1,6 +1,6 @@
 module "aci_oob_node_address" {
   source  = "netascode/oob-node-address/aci"
-  version = ">= 0.0.2"
+  version = ">= 0.1.0"
 
   node_id        = 111
   pod_id         = 2

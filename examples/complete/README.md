@@ -14,7 +14,7 @@ Note that this example will create resources. Resources can be destroyed with `t
 ```hcl
 module "aci_oob_node_address" {
   source  = "netascode/oob-node-address/aci"
-  version = ">= 0.0.2"
+  version = ">= 0.1.0"
 
   node_id        = 111
   pod_id         = 2
@@ -22,6 +22,5 @@ module "aci_oob_node_address" {
   gateway        = "100.1.1.254"
   endpoint_group = "OOB1"
 }
-
 ```
 <!-- END_TF_DOCS -->

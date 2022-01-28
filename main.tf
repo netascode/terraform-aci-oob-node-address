@@ -1,4 +1,4 @@
-resource "aci_rest" "mgmtOoB" {
+resource "aci_rest_managed" "mgmtOoB" {
   dn         = "uni/tn-mgmt/mgmtp-default/oob-${var.endpoint_group}"
   class_name = "mgmtOoB"
   content = {
@@ -6,8 +6,8 @@ resource "aci_rest" "mgmtOoB" {
   }
 }
 
-resource "aci_rest" "mgmtRsOoBStNode" {
-  dn         = "${aci_rest.mgmtOoB.dn}/rsooBStNode-[topology/pod-${var.pod_id}/node-${var.node_id}]"
+resource "aci_rest_managed" "mgmtRsOoBStNode" {
+  dn         = "${aci_rest_managed.mgmtOoB.dn}/rsooBStNode-[topology/pod-${var.pod_id}/node-${var.node_id}]"
   class_name = "mgmtRsOoBStNode"
   content = {
     addr = var.ip

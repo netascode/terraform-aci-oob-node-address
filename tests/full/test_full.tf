@@ -5,8 +5,8 @@ terraform {
     }
 
     aci = {
-      source  = "netascode/aci"
-      version = ">=0.2.0"
+      source  = "CiscoDevNet/aci"
+      version = ">=2.0.0"
     }
   }
 }
@@ -21,7 +21,7 @@ module "main" {
   endpoint_group = "OOB1"
 }
 
-data "aci_rest" "mgmtRsOoBStNode" {
+data "aci_rest_managed" "mgmtRsOoBStNode" {
   dn = "uni/tn-mgmt/mgmtp-default/oob-OOB1/rsooBStNode-[topology/pod-2/node-111]"
 
   depends_on = [module.main]
@@ -32,19 +32,19 @@ resource "test_assertions" "mgmtRsOoBStNode" {
 
   equal "addr" {
     description = "addr"
-    got         = data.aci_rest.mgmtRsOoBStNode.content.addr
+    got         = data.aci_rest_managed.mgmtRsOoBStNode.content.addr
     want        = "100.1.1.111/24"
   }
 
   equal "gw" {
     description = "gw"
-    got         = data.aci_rest.mgmtRsOoBStNode.content.gw
+    got         = data.aci_rest_managed.mgmtRsOoBStNode.content.gw
     want        = "100.1.1.254"
   }
 
   equal "tDn" {
     description = "tDn"
-    got         = data.aci_rest.mgmtRsOoBStNode.content.tDn
+    got         = data.aci_rest_managed.mgmtRsOoBStNode.content.tDn
     want        = "topology/pod-2/node-111"
   }
 }
