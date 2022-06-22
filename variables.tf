@@ -22,11 +22,25 @@ variable "pod_id" {
 variable "ip" {
   description = "OOB IP address."
   type        = string
+  default     = ""
 }
 
 variable "gateway" {
   description = "OOB gateway IP."
   type        = string
+  default     = ""
+}
+
+variable "v6_ip" {
+  description = "OOB IPv6 address."
+  type        = string
+  default     = ""
+}
+
+variable "v6_gateway" {
+  description = "OOB IPv6 gateway IP."
+  type        = string
+  default     = ""
 }
 
 variable "endpoint_group" {
