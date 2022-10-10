@@ -60,6 +60,6 @@ module "aci_oob_node_address" {
 
 | Name | Type |
 |------|------|
-| [aci_rest_managed.mgmtOoB](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
+| [aci_rest.mgmtOoB](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest) | resource |
 | [aci_rest_managed.mgmtRsOoBStNode](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->
