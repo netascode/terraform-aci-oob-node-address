@@ -1,4 +1,4 @@
-## 0.1.2 (unreleased)
+## 0.1.2
 
 - Fix unintended deletion of out-of-band EPG when module is destroyed
 
