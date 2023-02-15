@@ -14,8 +14,8 @@ variable "pod_id" {
   default     = 1
 
   validation {
-    condition     = var.pod_id >= 1 && var.pod_id <= 255
-    error_message = "Minimum value: 1. Maximum value: 255."
+    condition     = var.pod_id >= 0 && var.pod_id <= 255
+    error_message = "Minimum value: 0. Maximum value: 255."
   }
 }
 
