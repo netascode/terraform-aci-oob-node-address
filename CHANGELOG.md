@@ -1,3 +1,7 @@
+## 0.1.3 (unreleased)
+
+- Allow pod ID 0 for standalone APICs
+
 ## 0.1.2
 
 - Fix unintended deletion of out-of-band EPG when module is destroyed
