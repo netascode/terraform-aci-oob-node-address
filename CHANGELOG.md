@@ -1,3 +1,7 @@
+## 0.1.4 (unreleased)
+
+- Do not create the out-of-band EPG as it overlaps with the `terraform-aci-oob-endpoint-group` module
+
 ## 0.1.3
 
 - Allow pod ID 0 for standalone APICs
